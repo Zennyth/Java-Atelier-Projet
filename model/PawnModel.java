@@ -23,7 +23,7 @@ public class PawnModel implements PieceModel{
 	public char getColonne() {
 		char colonne = ' ';
 		
-		// TODO Atelier 1
+		colonne = this.coord.getColonne();
 
 		return colonne;
 	}
@@ -32,7 +32,7 @@ public class PawnModel implements PieceModel{
 	public int getLigne() {
 		int ligne = -1;
 		
-		// TODO Atelier 1
+		ligne = this.coord.getLigne();
 
 		return ligne;
 	}
@@ -51,7 +51,7 @@ public class PawnModel implements PieceModel{
 	public PieceSquareColor getPieceColor() {
 		PieceSquareColor color = null;
 		
-		// TODO Atelier 1
+		color = this.pieceColor;
 
 		return color;	
 	}
