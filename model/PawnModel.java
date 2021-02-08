@@ -14,7 +14,8 @@ public class PawnModel implements PieceModel{
 	public PawnModel(Coord coord, PieceSquareColor pieceColor) {
 		super();
 
-		// TODO Atelier 1
+		this.coord = coord;
+		this.pieceColor = pieceColor;
 
 	}
 
@@ -61,7 +62,7 @@ public class PawnModel implements PieceModel{
 	public String toString() {
 		String st = null;
 
-		// TODO Atelier 1
+		st = "[" + this.pieceColor.toString().charAt(0) + this.coord.toString() + "]";
 
 		return st;
 	}
@@ -69,15 +70,26 @@ public class PawnModel implements PieceModel{
 	@Override
 	public void move(Coord coord) {
 
-		// TODO Atelier 1
+		this.coord = coord;
 
 	}
 
 	@Override
 	public boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture) {
 		boolean ret = false;
+		int degree = 1;
+		
+		if(isPieceToCapture) {
+			degree = 2;
+		}
+		
+		System.out.println(Math.abs(this.coord.getLigne() - targetCoord.getLigne()) + Math.abs(this.coord.getColonne() - targetCoord.getColonne()));
 
 		// TODO Atelier 1
+		if(Coord.coordonnees_valides(targetCoord)) {
+			if((Math.abs(this.coord.getLigne() - targetCoord.getLigne()) + Math.abs(this.coord.getColonne() - targetCoord.getColonne()))/2 == degree)
+				ret = true;
+		}
 
 		return ret;
 	}

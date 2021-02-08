@@ -5,7 +5,7 @@ package model;
 /**
  * @author francoiseperrin
  *
- * Coordonnées des PieceModel
+ * Coordonnï¿½es des PieceModel
  */
 public class Coord implements Comparable<Coord>{
 	
@@ -41,29 +41,46 @@ public class Coord implements Comparable<Coord>{
 	public static boolean coordonnees_valides(Coord coord){
 
 		boolean ret = false;
-
-		// TODO Atelier 1
+		
+		if('a' <= coord.colonne && coord.colonne < 'a' + MAX  && 1 <= coord.ligne && coord.ligne < 1 + MAX)
+			ret = true;
 		
 		return ret;
+	}
+
+	public boolean equals(Coord o) {
+		boolean ret = false;
+		
+		if(this.colonne == o.colonne && this.ligne == o.ligne) 
+			ret = true;
+		
+		return ret ;
 	}
 
 
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 * 
-	 * La méthode compareTo() indique comment comparer un objet à l'objet courant
+	 * La mï¿½thode compareTo() indique comment comparer un objet ï¿½ l'objet courant
 	 * selon l'ordre dit naturel
-	 * Dans cet application, nous décidons que l'ordre naturel est celui 
-	 * correspondant au N° de la case d'un tableau 2D représenté par la Coord
-	 * ainsi le N° 1 correspond à la Coord ['a', 10], le N° 100 correspond à la Coord ['j', 1]  
+	 * Dans cet application, nous dï¿½cidons que l'ordre naturel est celui 
+	 * correspondant au Nï¿½ de la case d'un tableau 2D reprï¿½sentï¿½ par la Coord
+	 * ainsi le Nï¿½ 1 correspond ï¿½ la Coord ['a', 10], le Nï¿½ 100 correspond ï¿½ la Coord ['j', 1]  
 	 */
 	@Override
 	public int compareTo(Coord o) {
 		int ret = 999;
 		
-		// TODO Atelier 1
+		int co1 = (this.colonne - 'a' + 1) + this.ligne*10;
+		int co2 = (o.colonne - 'a' + 1) + o.ligne*10;
 		
-		return ret ;
+		if(co1 > co2) {
+			ret = -999;
+		} else if(co1 == co2) {
+			ret = 0;
+		}
+		
+		return ret;
 	}
 
 }
