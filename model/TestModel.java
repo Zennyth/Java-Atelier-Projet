@@ -86,8 +86,8 @@ public class TestModel {
 //		// Test classe Model
 //		//////////////////////////////////
 //
-//		System.out.println("\nTest classe Model");
-//		Model model = new Model();	// constructeur cr�e model et l'affiche
+		System.out.println("\nTest classe Model");
+		Model model = new Model();	// constructeur cr�e model et l'affiche
 //		System.out.println("isPieceMoveable ('b',4) -> ('c',5)  = " 
 //							+ model.isPieceMoveable(new Coord('b',4), new Coord('c',5)));	// true
 //		System.out.println("isPieceMoveable ('c',7) -> ('d',6) = " 

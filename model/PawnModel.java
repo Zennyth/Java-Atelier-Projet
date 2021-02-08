@@ -41,8 +41,9 @@ public class PawnModel implements PieceModel{
 	public boolean hasThisCoord(Coord coord) {
 		boolean hasThisCoord = false;
 		
-		// TODO Atelier 1
-
+		if(this.coord.equals(coord))
+			hasThisCoord = true;
+		
 		return hasThisCoord;
 	}
 
@@ -77,21 +78,30 @@ public class PawnModel implements PieceModel{
 	@Override
 	public boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture) {
 		boolean ret = false;
-		int degree = 1;
+		boolean color = false;
+		int degree = 1; //Variable indiquant le degrée de liberté de mouvement d'un pion (il passe à 2 si il capture un pion)
+		
+		//On test si la couleur du pion est noire, on test ensuite si les pions avancent et ne reculent pas
+		if(this.pieceColor == PieceSquareColor.BLACK) {
+			if(this.coord.getLigne() > targetCoord.getLigne()) {
+				color = true;
+			}
+		} else {
+			if(this.coord.getLigne() < targetCoord.getLigne()) {
+				color = true;
+			}
+		}
 		
 		if(isPieceToCapture) {
 			degree = 2;
 		}
 		
-		System.out.println(Math.abs(this.coord.getLigne() - targetCoord.getLigne()) + Math.abs(this.coord.getColonne() - targetCoord.getColonne()));
-
-		// TODO Atelier 1
 		if(Coord.coordonnees_valides(targetCoord)) {
 			if((Math.abs(this.coord.getLigne() - targetCoord.getLigne()) + Math.abs(this.coord.getColonne() - targetCoord.getColonne()))/2 == degree)
 				ret = true;
 		}
 
-		return ret;
+		return ret && color;
 	}
 
 	@Override
