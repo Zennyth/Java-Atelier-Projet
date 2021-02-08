@@ -63,8 +63,9 @@ public class ModelImplementor {
 	public boolean movePiece(Coord initCoord, Coord targetCoord) {
 
 		boolean isMovePieceDone = false;
-
-		if(isMovePieceOk(initCoord, targetCoord, isPieceToTake)) //MATHIS A L AIDE
+		
+		this.findPiece(initCoord).move(targetCoord);
+		isMovePieceDone = true;
 		
 		return isMovePieceDone;
 	}
