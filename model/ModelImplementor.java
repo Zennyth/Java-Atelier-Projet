@@ -80,6 +80,8 @@ public class ModelImplementor {
 		List<Coord> coordsOnItinerary = null;
 		
 		// TODO Atelier 2
+		PieceModel piece = this.findPiece(initCoord);
+		if(piece != null) coordsOnItinerary = piece.getCoordsOnItinerary(targetCoord);
 		
 		return coordsOnItinerary;
 	}
