@@ -50,9 +50,8 @@ public class ModelImplementor {
 	public boolean isMovePieceOk(Coord initCoord, Coord targetCoord, boolean isPieceToTake) {
 		boolean isMovePieceOk = false;
 		PieceModel initPiece = this.findPiece(initCoord);
-		boolean target = isPiecehere(targetCoord);
 		
-		if(initPiece != null && !target) {
+		if(initPiece != null) {
 			isMovePieceOk = initPiece.isMoveOk(targetCoord, isPieceToTake);
 		}
 		

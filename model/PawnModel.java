@@ -110,6 +110,15 @@ public class PawnModel implements PieceModel{
 		List<Coord> coordsOnItinery = new LinkedList<Coord>(); 
 
 		// TODO Atelier 2
+		/*
+		Coord position = new Coord(this.getColonne(), this.getLigne());
+		for (int x = 1; x <= Math.abs(this.coord.getLigne() - targetCoord.getLigne()); x++) {
+			for (int y = 1; y <= Math.abs(this.coord.getColonne() - targetCoord.getColonne()); y++) {
+				Coord position = new Coord(this.getColonne(), this.getLigne());
+				System.out.println(this.coord.getLigne());
+			}
+		}*/
+		
 
 		return coordsOnItinery;
 	}
