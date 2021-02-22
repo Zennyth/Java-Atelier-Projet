@@ -97,7 +97,7 @@ public class PawnModel implements PieceModel{
 		}
 		
 		if(Coord.coordonnees_valides(targetCoord)) {
-			if((Math.abs(this.coord.getLigne() - targetCoord.getLigne()) + Math.abs(this.coord.getColonne() - targetCoord.getColonne()))/2 == degree)
+			if(Math.abs(this.coord.getLigne() - targetCoord.getLigne()) == degree && Math.abs(this.coord.getColonne() - targetCoord.getColonne()) == degree)
 				ret = true;
 		}
 
@@ -110,12 +110,15 @@ public class PawnModel implements PieceModel{
 		List<Coord> coordsOnItinery = new LinkedList<Coord>(); 
 
 		// TODO Atelier 2
-		Coord position = new Coord(this.getColonne(), this.getLigne());
-		int dist = this.coord.getLigne() - targetCoord.getLigne();
-		int start = dist > 0 ? 1 : -1;
 		
-		for (int diag = 1; diag <= dist; diag++) {
-			coordsOnItinery.add(new Coord((char)(this.getColonne() + diag), this.getLigne() + diag));
+		Coord position = new Coord(this.getColonne(), this.getLigne());
+		int distY =  targetCoord.getLigne() - this.getLigne();
+		int distX = targetCoord.getColonne() - this.getColonne();
+		int sX = (int)Math.signum(distX);
+		int sY = (int)Math.signum(distY);
+		
+		for (int x = 1; x < Math.abs(distX); x++) {
+			coordsOnItinery.add(new Coord((char)(this.getColonne() + x*sX), this.getLigne() + x*sY));
 		}
 		
 

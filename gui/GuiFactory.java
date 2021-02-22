@@ -49,12 +49,7 @@ public class GuiFactory {
 			squareColor = PieceSquareColor.BLACK;
 		}
 		// +97 convert to non-capital ASCII char
-		square = new SquareGui(new Coord((char)(col+97), ligne));
-		
-		// la couleur est d�finie par les valeurs par d�faut de configuration
-		Color color = PieceSquareColor.BLACK.equals(squareColor) ? GuiConfig.CASEBLACK : GuiConfig.CASEWHITE;
-		square.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
-		square.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		square = new SquareGui(new Coord((char)(col+97), ligne), squareColor);
 		
 		return square;
 	}
@@ -78,9 +73,8 @@ public class GuiFactory {
 				pieceColor = PieceSquareColor.WHITE;
 		}
 		if (pieceColor != null) {
-			pieceGui = new PieceGui(pieceColor);
 			image = GuiFactory.createImage(pieceColor, true);
-			pieceGui.promote(image);
+			pieceGui = new PieceGui(pieceColor, image);
 		}
 
 		return pieceGui;

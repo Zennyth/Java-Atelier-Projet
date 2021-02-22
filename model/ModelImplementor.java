@@ -72,6 +72,9 @@ public class ModelImplementor {
 	public void removePiece(Coord pieceToTakeCoord) {
 
 		// TODO Atelier 2
+		if (pieceToTakeCoord != null) {
+			this.pieces.remove(this.findPiece(pieceToTakeCoord));
+		}
 		
 	}
 

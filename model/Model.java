@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.LinkedList;
 import java.util.List;
 
 import controller.OutputModelData;
@@ -40,7 +41,7 @@ public class Model implements BoardGame<Coord> {
 
 	@Override
 	public String toString() {
-		return implementor.toString();
+		return "";
 	}
 
 
@@ -134,13 +135,21 @@ public class Model implements BoardGame<Coord> {
 	 */
 	private boolean isThereMaxOnePieceOnItinerary(Coord toMovePieceCoord, Coord targetSquareCoord) {
 		boolean isThereMaxOnePieceOnItinerary = false; // TODO Atelier 2 - initialiser � false
+		List<Coord> coordsOnItinery = this.implementor.getCoordsOnItinerary(toMovePieceCoord, targetSquareCoord);
+		
+		int count = 0;
 
 		// TODO Atelier 2
-		if(this.implementor.getCoordsOnItinerary(toMovePieceCoord, targetSquareCoord).size() <= 1) isThereMaxOnePieceOnItinerary = true;
-
-		return isThereMaxOnePieceOnItinerary;
-	}.
-
+		for (int i = 0; i < coordsOnItinery.size(); i++) {
+			PieceModel piece = this.implementor.findPiece(coordsOnItinery.get(i));
+			if(piece != null && piece.getPieceColor() == this.currentGamerColor) {
+				isThereMaxOnePieceOnItinerary = true;
+				count++;
+			}
+		}
+		
+		return count <= 1;
+	}
 	/**
 	 * @param toMovePieceCoord
 	 * @param targetSquareCoord
@@ -148,8 +157,14 @@ public class Model implements BoardGame<Coord> {
 	 */
 	private Coord getToCapturePieceCoord(Coord toMovePieceCoord, Coord targetSquareCoord) {
 		Coord toCapturePieceCoord = null;
+		List<Coord> coordsOnItinery = this.implementor.getCoordsOnItinerary(toMovePieceCoord, targetSquareCoord);
 
 		// TODO Atelier 2
+		for (int i = 0; i < coordsOnItinery.size(); i++) {
+			if(this.implementor.isPiecehere(coordsOnItinery.get(i)) && toCapturePieceCoord == null) {
+				toCapturePieceCoord = coordsOnItinery.get(i);
+			}
+		}
 
 		return toCapturePieceCoord;
 	}

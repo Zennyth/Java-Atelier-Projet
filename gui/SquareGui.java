@@ -26,10 +26,12 @@ class SquareGui extends BorderPane implements CheckersSquareGui {
 	// ToDo Atelier 2
 	private Coord coord;
 	
-	public SquareGui(Coord coord) {
+	public SquareGui(Coord coord,PieceSquareColor squareColor) {
 		super();
 		this.coord = coord;
-
+		Color color = PieceSquareColor.BLACK.equals(squareColor) ? GuiConfig.CASEBLACK : GuiConfig.CASEWHITE;
+		this.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 
 	/**
