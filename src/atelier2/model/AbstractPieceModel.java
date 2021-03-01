@@ -72,9 +72,34 @@ public abstract class AbstractPieceModel implements PieceModel {
 	
 	@Override
 	public int compareTo(PieceModel o) {
-		Coord thisValue = this.coord;
-		Coord oValue = new Coord((char)o.getColonne(), o.getLigne());
-		return thisValue.compareTo(oValue) ;
+		return 0;
 	}
+
+	@Override
+	public int hashCode() { // ça se base sur le equals
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((coord == null) ? 0 : coord.hashCode());
+		return result;
+	}
+
+	@Override  // ok cool
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstractPieceModel other = (AbstractPieceModel) obj;
+		if (coord == null) {
+			if (other.coord != null)
+				return false;
+		} else if (!coord.equals(other.coord))
+			return false;
+		return true;
+	}
+	
+	
 
 }

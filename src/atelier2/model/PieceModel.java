@@ -48,7 +48,8 @@ public interface PieceModel extends Comparable<PieceModel>{
 	
 	@Override
 	public int compareTo(PieceModel o);
-
 	
+	@Override
+	public int hashCode();
 }
 

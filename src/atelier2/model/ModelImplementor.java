@@ -9,6 +9,8 @@ import java.util.ListIterator;
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import atelier2.nutsAndBolts.PieceSquareColor;
+import comparators.ColumnLineComparator;
+import comparators.CoordComparator;
 
 /**
  * @author francoise.perrin
@@ -143,18 +145,27 @@ public class ModelImplementor {
 
 
 		String st = "";
-		Collections.sort((List<PieceModel>)this.pieces);
-		ListIterator<PieceModel> piecesList = ((List<PieceModel>)this.pieces).listIterator();
-		
-		
+//		Collections.sort((List<PieceModel>)this.pieces);
+//		ListIterator<PieceModel> piecesList = ((List<PieceModel>)this.pieces).listIterator();
+				
 		int i=0;
-		while(piecesList.hasNext()) {
+		for(PieceModel piece : this.pieces) {
 			if(i%5 == 0) {
 				st+="\n";
 			}
-			st+=piecesList.next().toString();
+			st+=piece.toString();
 			i++;
 		}
+		
+		
+//		int i=0;
+//		while(piecesList.hasNext()) {
+//			if(i%5 == 0) {
+//				st+="\n";
+//			}
+//			st+=piecesList.next().toString();
+//			i++;
+//		}
 	
 		return st;
 	}

@@ -1,6 +1,8 @@
 package atelier2.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 import atelier2.nutsAndBolts.PieceSquareColor;
@@ -9,7 +11,9 @@ public class ModelFactory {
 
 	public static Collection<PieceModel> createPieceModelCollection() {
 		
-		Collection<PieceModel> pieces = new LinkedList<PieceModel>();
+		//HashSet<PieceModel> pieces = new HashSet<PieceModel>();
+		Collection<PieceModel> pieces = new LinkedList<PieceModel>(); // LinkedList est préférable pour manipuler les données
+		//Collection<PieceModel> pieces = new ArrayList<PieceModel>(); // ArrayList est préférable pour accéder et stocker les données
 
 		// Cr�ation des pion blancs et ajout dans la collection de pi�ces
 		for ( Coord coord : ModelConfig.WHITE_PIECE_COORDS){
