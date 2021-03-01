@@ -2,7 +2,9 @@ package atelier2.model;
 
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
@@ -141,35 +143,19 @@ public class ModelImplementor {
 
 
 		String st = "";
-		String[][] damier = new String[ModelConfig.LENGTH][ModelConfig.LENGTH];
-
-		// cr�ation d'un tableau 2D avec les noms des pi�ces � partir de la liste de pi�ces
-		for(PieceModel piece : this.pieces) {
-
-			PieceSquareColor color = piece.getPieceColor();
-			String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--" );
-
-			int col = piece.getColonne() -'a';
-			int lig = piece.getLigne() -1;
-			damier[lig][col ] = stColor ;
+		Collections.sort((List<PieceModel>)this.pieces);
+		ListIterator<PieceModel> piecesList = ((List<PieceModel>)this.pieces).listIterator();
+		
+		
+		int i=0;
+		while(piecesList.hasNext()) {
+			if(i%5 == 0) {
+				st+="\n";
+			}
+			st+=piecesList.next().toString();
+			i++;
 		}
-
-		// Affichage du tableau formatt�
-		//st = "     a      b      c      d      e      f      g      h      i      j\n";
-//		for ( int lig = 9; lig >=0 ; lig--) {
-//			st += (lig+1) + "  ";
-//			for ( int col = 0; col <= 9; col++) {					 
-//				String stColor = damier[lig][col];				
-//				if (stColor != null) {						
-//					st += stColor + "  ";	
-//				} 
-//				else {
-//					st += "-----  ";
-//				}
-//			}
-//			st +="\n";
-//		}
-//		return "Damier du model \n" + st;	
+	
 		return st;
 	}
 

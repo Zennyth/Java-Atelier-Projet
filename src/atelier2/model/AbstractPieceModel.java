@@ -11,7 +11,7 @@ public abstract class AbstractPieceModel implements PieceModel {
 	protected PieceSquareColor pieceColor;
 	
 	public AbstractPieceModel(Coord coord, PieceSquareColor pieceColor) {
-		this.coord = coord;
+		this.coord = coord; 
 		this.pieceColor = pieceColor;
 	}
 
@@ -68,6 +68,13 @@ public abstract class AbstractPieceModel implements PieceModel {
 			}
 		}
 		return coordsOnItinery;
+	}
+	
+	@Override
+	public int compareTo(PieceModel o) {
+		Coord thisValue = this.coord;
+		Coord oValue = new Coord((char)o.getColonne(), o.getLigne());
+		return thisValue.compareTo(oValue) ;
 	}
 
 }
